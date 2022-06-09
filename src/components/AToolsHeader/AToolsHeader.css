@@ -1,0 +1,41 @@
+/*---------------------------
+        Header Design
+-----------------------------*/
+nav{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.header-title{
+    font-weight: 900;
+    font-size: 30px;
+    color: #023047;
+}
+
+.header-title span{
+    color: #fb8501;
+    font-size: 40px;
+}
+
+.btn{
+    width: 150px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn + .btn{
+    margin-left: 20px;
+}
+
+.ant-btn.login-btn{
+    background-color: #fb8601;
+    border-color: #fb8501;
+        color: white;
+}
+
+.ant-btn.login-btn:hover {
+    background-color: #fb8601c0;
+    border-color: #fb8501c0;
+}
