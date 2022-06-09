@@ -12,14 +12,14 @@ const Login = () => {
 
     // integration of ant design hooks here
     const [form] = Form.useForm();
-    const nameValue = Form.useWatch('name', form);
+    const emailValue = Form.useWatch('email', form);
     const passValue = Form.useWatch('password', form);
 
     // event handler for login button
     const handleLogin = async () => {
         setShowLoading(true);
 
-        const email = nameValue;
+        const email = emailValue;
         const password = passValue;
 
         const user = { email, password };
@@ -53,11 +53,11 @@ const Login = () => {
                         ref={fromRef}
                         name='loginForm'
                     >
-                        <Form.Item>
-                            <Input className='input' name='email' placeholder='Email Address *' type='email' required />
+                        <Form.Item name='email'>
+                            <Input className='input' placeholder='Email Address *' type='email' required />
                         </Form.Item>
-                        <Form.Item>
-                            <Input className='input' name='password' placeholder='Password *' type='password' required />
+                        <Form.Item name='password'>
+                            <Input className='input' placeholder='Password *' type='password' required />
                         </Form.Item>
                         <Form.Item className='form-login-btn-container'>
                             <Button htmlType='submit' className='form-login-btn btn' type='primary' size='large' block>Login</Button>
