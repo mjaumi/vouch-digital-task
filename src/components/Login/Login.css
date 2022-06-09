@@ -1,4 +1,15 @@
 /*---------------------------
+        Utilities
+-----------------------------*/
+.visible{
+    display: block;
+}
+
+.hidden{
+    display: none;
+}
+
+/*---------------------------
         Header Design
 -----------------------------*/
 .login{
@@ -41,14 +52,16 @@
     margin-top: 15px;
 }
 
+.form-login-btn-container{
+    margin: 0;
+}
+
 .form-login-btn{
-    margin-top: 15px;
     padding: 15px;
     height: fit-content;
 }
 
 .form-footer{
-    margin-top: 10px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -74,6 +87,33 @@
 
 .img-container img{
     width: 80%;
+}
+
+.spinner-wrapper{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+}
+
+.spinner-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ant-spin-dot{
+    height: 50px;
+    width: 50px;
+}
+
+.ant-spin-lg .ant-spin-dot i{
+    height: 20px;
+    width: 20px;
+    background-color: #fb8501;
 }
 
 /*----------------------------------

@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import './Login.css';
 import bg from '../../images/login-bg.png';
-import { Button, Checkbox, Input } from 'antd';
+import { Button, Checkbox, Form, Input, Spin } from 'antd';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const Login = () => {
+    // integration of react hooks here
+    const [showLoading, setShowLoading] = useState(false);
+    const fromRef = useRef();
+
+    // integration of ant design hooks here
+    const [form] = Form.useForm();
+    const nameValue = Form.useWatch('name', form);
+    const passValue = Form.useWatch('password', form);
 
     // event handler for login button
-    const handleLogin = async (event) => {
-        event.preventDefault();
+    const handleLogin = async () => {
+        setShowLoading(true);
 
-        const email = event.target.email.value;
-        const password = event.target.password.value;
+        const email = nameValue;
+        const password = passValue;
 
         const user = { email, password };
 
@@ -27,6 +35,9 @@ const Login = () => {
         } catch (error) {
             toast.error('User Not Found!!!');
         }
+
+        fromRef.current.resetFields();
+        setShowLoading(false);
     }
 
     // rendering login component here
@@ -36,11 +47,22 @@ const Login = () => {
                 <h1 className='form-title'>Welcome Back</h1>
                 <p className='form-text'>Sub-title text goes here</p>
                 <div className='form-wrapper'>
-                    <form onSubmit={handleLogin}>
-                        <Input className='input' name='email' placeholder='Email Address *' type='email' required />
-                        <Input className='input' name='password' placeholder='Password *' type='password' required />
-                        <Button htmlType='submit' className='form-login-btn btn' type='primary' size='large' block>Login</Button>
-                    </form>
+                    <Form
+                        onFinish={handleLogin}
+                        form={form}
+                        ref={fromRef}
+                        name='loginForm'
+                    >
+                        <Form.Item>
+                            <Input className='input' name='email' placeholder='Email Address *' type='email' required />
+                        </Form.Item>
+                        <Form.Item>
+                            <Input className='input' name='password' placeholder='Password *' type='password' required />
+                        </Form.Item>
+                        <Form.Item className='form-login-btn-container'>
+                            <Button htmlType='submit' className='form-login-btn btn' type='primary' size='large' block>Login</Button>
+                        </Form.Item>
+                    </Form>
                     <div className='form-footer'>
                         <Checkbox className='form-footer-text'>Remember Password</Checkbox>
                         <Button className='form-footer-text forgot-btn' type="link">Forgot Password?</Button>
@@ -49,6 +71,11 @@ const Login = () => {
             </div>
             <div className='img-container'>
                 <img src={bg} alt="login bg" />
+            </div>
+            <div className={`spinner-wrapper ${showLoading ? 'visible' : 'hidden'}`}>
+                <div className='spinner-container'>
+                    <Spin className='loading-spinner' size='large' />
+                </div>
             </div>
         </section>
     );
