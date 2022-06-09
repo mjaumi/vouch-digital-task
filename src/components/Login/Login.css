@@ -1,0 +1,76 @@
+/*---------------------------
+        Header Design
+-----------------------------*/
+.login{
+    max-height: 100vh;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-title{
+    font-weight: 900;
+    font-size: 40px;
+    margin: 0;
+    line-height: 40px;
+}
+
+.form-text{
+    margin: 0;
+}
+
+.form-wrapper{
+    margin-top: 20px;
+    width: 50%;
+}
+
+.input{
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.input + .input{
+    margin-top: 15px;
+}
+
+.form-login-btn{
+    margin-top: 15px;
+    padding: 15px;
+    height: fit-content;
+}
+
+.form-footer{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-footer-text{
+    font-weight: 500;
+    color: #023047;
+    font-size: 13px;
+}
+
+.forgot-btn{
+    padding: 0;
+}
+
+.img-container{
+    background-color: #023047;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.img-container img{
+    width: 80%;
+}
