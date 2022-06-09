@@ -2,8 +2,32 @@ import React from 'react';
 import './Login.css';
 import bg from '../../images/login-bg.png';
 import { Button, Checkbox, Input } from 'antd';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+
+    // event handler for login button
+    const handleLogin = async (event) => {
+        event.preventDefault();
+
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+
+        const user = { email, password };
+
+        try {
+
+            const { data } = await axios.post('https://reqres.in/api/login', user);
+
+            if (data.token) {
+                toast.success('Logged In Successfully!!!');
+            }
+
+        } catch (error) {
+            toast.error('User Not Found!!!');
+        }
+    }
 
     // rendering login component here
     return (
@@ -12,10 +36,10 @@ const Login = () => {
                 <h1 className='form-title'>Welcome Back</h1>
                 <p className='form-text'>Sub-title text goes here</p>
                 <div className='form-wrapper'>
-                    <form>
-                        <Input className='input' placeholder='Email Address *' type='email' required />
-                        <Input className='input' placeholder='Password *' type='password' required />
-                        <Button className='form-login-btn btn' type='primary' size='large' block>Login</Button>
+                    <form onSubmit={handleLogin}>
+                        <Input className='input' name='email' placeholder='Email Address *' type='email' required />
+                        <Input className='input' name='password' placeholder='Password *' type='password' required />
+                        <Button htmlType='submit' className='form-login-btn btn' type='primary' size='large' block>Login</Button>
                     </form>
                     <div className='form-footer'>
                         <Checkbox className='form-footer-text'>Remember Password</Checkbox>
