@@ -2,10 +2,11 @@
         Header Design
 -----------------------------*/
 .login{
-    max-height: 100vh;
+    height: calc(100vh - 64px);
     background-color: white;
     display: grid;
     grid-template-columns: 2fr 3fr;
+    overflow: hidden;
 }
 
 .form-container{
@@ -73,4 +74,29 @@
 
 .img-container img{
     width: 80%;
+}
+
+/*----------------------------------
+        Login Responsiveness
+----------------------------------*/
+@media screen and (max-width: 768px) {
+    .login{
+        grid-template-columns: 1fr;
+        margin: auto 0;
+    }
+
+    .form-title {
+        font-weight: 900;
+        font-size: 30px;
+        margin: 0;
+        line-height: 40px;
+    }
+
+    .form-wrapper{
+        width: 80%;
+    }
+
+    .img-container{
+        display: none;
+    }
 }

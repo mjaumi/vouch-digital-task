@@ -40,3 +40,16 @@ nav{
     background-color: #fb8601c0;
     border-color: #fb8501c0;
 }
+
+/*----------------------------------
+        Header Responsiveness
+----------------------------------*/
+@media screen and (max-width: 768px) {
+    nav{
+        width: 100%;
+    }
+
+    .header-btn-container{
+        display: none;
+    }
+}
